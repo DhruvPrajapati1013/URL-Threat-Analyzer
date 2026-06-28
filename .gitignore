@@ -1,0 +1,4 @@
+__pycache__/
+*.pyc
+.env
+URL_Threat_Report.pdf

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analysis Result</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+
+    <h1>Analysis Result</h1>
+
+    <h2>{{ url }}</h2>
+
+    <h3>🌐 Domain: {{ domain }}</h3>
+
+    <h3>🔒 Protocol: {{ protocol|upper }}</h3>
+
+    {% if https_status == "Secure" %}
+
+    <h3 style="color:lime;">
+        🔒 HTTPS Status: Secure
+    </h3>
+
+    {% else %}
+
+    <h3 style="color:red;">
+        ⚠️ HTTPS Status: Not Secure
+    </h3>
+
+    {% endif %}
+
+    <h3>📍 IP Address: {{ ip_address }}</h3>
+
+    <h3>📄 Page Title: {{ page_title }}</h3>
+
+    <h3>📡 Status Code: {{ status_code }}</h3>
+
+    <h3>🔗 Final URL: {{ final_url }}</h3>
+
+    {% if status == "Safe" %}
+
+        <h2 style="color:lime;">✅ SAFE</h2>
+
+    {% else %}
+
+        <h2 style="color:red;">🚨 SUSPICIOUS</h2>
+
+    {% endif %}
+
+    <h3>Risk Score: {{ score }}/100</h3>
+
+    <div class="progress">
+
+        <div class="progress-bar"
+            style="width: {{ score }}%; background: {{ color }};">
+
+            {{ score }}%
+
+        </div>
+
+    </div>
+
+    <h2>VirusTotal Scan</h2>
+
+    <p>Malicious: {{ malicious }}</p>
+
+    <p>Suspicious: {{ suspicious }}</p>
+
+    <p>Harmless: {{ harmless }}</p>
+
+    <h3>Reasons:</h3>
+
+    {% if reasons %}
+
+        <ul>
+        {% for reason in reasons %}
+            <li>{{ reason }}</li>
+        {% endfor %}
+        </ul>
+
+    {% else %}
+
+        <p style="color:lime;">
+            ✅ No suspicious indicators found.
+        </p>
+
+    {% endif %}
+
+    <hr>
+
+    <h2>Scan Information</h2>
+
+    <p><b>Scan Engine:</b> VirusTotal API</p>
+
+    <p><b>Scan Time:</b> {{ scan_time }}</p>
+
+    <p><b>Analyzer Version:</b> 1.0</p>
+
+    <hr>
+
+    <br><br>
+
+    <a href="/download">
+    
+    ⬇ Download PDF Report
+
+    </a>
+
+    <br><br>
+
+    <a href="/">Analyze Another URL</a>
+
+</div>
+
+<footer>
+
+Developed by Dhruv Prajapati © 2026
+
+</footer>
+
+</body>
+</html>

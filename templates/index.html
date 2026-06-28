@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Threat Analyzer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+
+    <h1>🔒 URL Threat Analyzer</h1>
+
+    <p class="subtitle">
+        Analyze any website URL and detect whether it is Safe or Suspicious.
+    </p>
+
+    <form action="/analyze" method="POST" onsubmit="showLoading()">
+
+        <input
+            type="text"
+            name="url"
+            placeholder="Enter Website URL"
+            required
+        >
+
+        <br><br>
+
+        <input type="submit" value="Analyze URL">
+
+        <br><br>
+
+        <div id="loading" style="display:none;">
+
+        <h3>⏳ Analyzing URL...</h3>
+
+        </div>
+
+    </form>
+
+</div>
+
+<script>
+
+function showLoading(){
+
+    document.getElementById("loading").style.display = "block";
+
+}
+
+</script>
+
+</body>
+</html>
